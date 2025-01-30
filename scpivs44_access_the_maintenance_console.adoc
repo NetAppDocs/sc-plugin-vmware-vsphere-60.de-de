@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_access_the_maintenance_console.html 
+keywords:  
+summary: Applikations-, System- und Netzwerkkonfigurationen können über die Wartungskonsole für das SnapCenter Plug-in für VMware vSphere gemanagt werden. Sie können Ihr Administratorpasswort, das Wartungspasswort, das Generieren von Support Bundles und das Starten der Remote Diagnostics ändern. 
+---
+= Öffnen Sie die Wartungskonsole
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Wartungskonsole für das SnapCenter Plug-in für VMware vSphere ermöglicht das Management Ihrer Applikations-, System- und Netzwerkkonfigurationen. Sie können Ihr Administratorpasswort, das Wartungspasswort, das Generieren von Support Bundles und das Starten der Remote Diagnostics ändern.
+
+.Bevor Sie beginnen
+Bevor Sie das SnapCenter-Plug-in für den VMware vSphere-Dienst beenden und neu starten, sollten Sie alle Zeitpläne unterbrechen.
+
+.Über diese Aufgabe
+* Im SnapCenter-Plug-in für VMware vSphere 4.6P1 müssen Sie beim ersten Installieren des SnapCenter-Plug-ins für VMware vSphere ein Passwort angeben. Wenn Sie von Version 4.6 oder früher auf Version 4.6P1 oder höher aktualisieren, wird das frühere Standardpasswort akzeptiert.
+* Sie müssen ein Passwort für den Benutzer „diag“ festlegen, während Sie die Ferndiagnose aktivieren.
++
+Um die Root-Benutzerberechtigung zum Ausführen des Befehls zu erhalten, verwenden Sie sudo <command>.
+
+
+
+.Schritte
+. Wählen Sie im VMware vSphere-Client die VM aus, auf der sich das SnapCenter-Plug-in für VMware vSphere befindet.
+. Klicken Sie auf der Registerkarte *Zusammenfassung* der virtuellen Appliance auf *Remote-Konsole starten*, um ein Fenster der Wartungskonsole zu öffnen.
++
+Melden Sie sich mit dem Standardbenutzernamen und Passwort der Wartungskonsole an `maint` , die Sie bei der Installation festgelegt haben.
+
++
+image:scpivs44_image11.png["Fenster der Wartungskonsole"]
+
+. Sie können folgende Vorgänge durchführen:
++
+** Option 1: Anwendungskonfiguration
++
+Zusammenfassung des SnapCenter-Plug-ins für VMware vSphere anzeigen Starten oder Stoppen des SnapCenter-Plug-ins für VMware vSphere-Service Anmeldenamen oder Kennwort für SnapCenter-Plug-in für VMware vSphere ändern MySQL-Kennwort sichern und wiederherstellen, MySQL-Backups konfigurieren und auflisten
+
+** Option 2: Systemkonfiguration
++
+Virtuelle Maschine neu starten virtuelle Maschine herunterfahren Benutzerpasswort ändern Zeitzone ändern NTP-Server aktivieren SSH-Zugriff aktivieren Jail-Festplattengröße erhöhen (/Jail) Upgrade VMware Tools MFA-Token generieren installieren
+
++
+
+NOTE: MFA ist immer aktiviert, Sie können MFA nicht deaktivieren.
+
+** Option 3: Netzwerkkonfiguration
++
+Anzeigen oder Ändern von IP-Adresseinstellungen Anzeigen oder Ändern von Einstellungen für die Suche nach Domänennamen Anzeigen oder Ändern statischer Routen Übergeben von Änderungen Ping a Host
+
+** Option 4: Support und Diagnose
++
+Support Bundle generieren Access Diagnostic Shell Remote-Zugriff für Diagnosezugriff erzeugen Core Dump Bundle generieren
+
+
+
+

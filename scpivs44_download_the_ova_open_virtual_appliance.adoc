@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_download_the_ova_open_virtual_appliance.html 
+keywords:  
+summary: Die .tar-Datei umfasst die OVA, eine Gruppe von Microservices für die VM- und Datastore-Datensicherung und die Zertifikatdatei. 
+---
+= Open Virtual Appliance (OVA) herunterladen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Fügen Sie vor der Installation der Open Virtual Appliance (OVA) das Zertifikat in vCenter hinzu. Die .tar-Datei enthält die OVA und die Root- und Intermediate-Zertifikate. Die Zertifikate finden Sie im Ordner Zertifikate. Die OVA-Implementierung wird in VMware vCenter 7u1 und höher unterstützt.
+
+In VMware vCenter 7.0.3 Versionen und höher ist die OVA, die vom Vertrauenzertifikat unterzeichnet wurde, nicht mehr vertrauenswürdig. Zur Behebung des Problems müssen Sie das folgende Verfahren durchführen.
+
+.Schritte
+. So laden Sie das SnapCenter Plug-in für VMware herunter:
++
+** Melden Sie sich auf der NetApp Support-Website an ( https://mysupport.netapp.com/products/index.html["https://mysupport.netapp.com/products/index.html"^]).
+** Wählen Sie aus der Liste der Produkte *SnapCenter Plug-in für VMware vSphere* und klicken Sie dann auf die Schaltfläche *Neueste Version herunterladen*.
+** Laden Sie das SnapCenter-Plug-in für VMware vSphere an einen beliebigen Speicherort herunter `.tar` .
+
+
+. Extrahieren Sie den Inhalt der tar-Datei. Die tar-Datei enthält den Ordner OVA und certs. Der Ordner „Zertifikaten“ enthält die Zertifikate „Stammanvertrauen“ und „Intermediate“.
+. Melden Sie sich mit dem vSphere Client am vCenter Server an.
+. Navigieren Sie zu *Administration > Zertifikate > Zertifikatverwaltung*.
+. Klicken Sie neben *Trusted Root Certificates* auf *Add*
++
+** Wechseln Sie zum Ordner _certs_.
+** Wählen Sie Root- und Intermediate-Zertifikate anvertrauen aus.
+** Installieren Sie jedes Zertifikat einzeln.
+
+
+. Die Zertifikate werden zu einem Panel unter *Trusted Root Certificates* hinzugefügt. Sobald die Zertifikate installiert sind, kann OVA überprüft und bereitgestellt werden.
+
+
+
+NOTE: Wenn das heruntergeladene OVA nicht manipuliert wird, wird in der Spalte *Publisher* *Trusted Certificate* *angezeigt.

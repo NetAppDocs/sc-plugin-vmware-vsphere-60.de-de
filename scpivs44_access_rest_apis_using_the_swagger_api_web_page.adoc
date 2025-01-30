@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_access_rest_apis_using_the_swagger_api_web_page.html 
+keywords:  
+summary: REST-APIs sind über die Swagger Webseite zugänglich. Sie können auf die Swagger-Webseite zugreifen, um den SnapCenter-Server oder das SnapCenter-Plug-in für VMware vSphere REST-APIs anzuzeigen, sowie einen API-Aufruf manuell auszuführen. Verwenden Sie das SnapCenter Plug-in für VMware vSphere REST-APIs, um Sicherungsvorgänge bei VMs und Datastores durchzuführen. 
+---
+= Greifen Sie über die Swagger API-Webseite auf REST-APIs zu
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+REST-APIs sind über die Swagger Webseite zugänglich. Sie können auf die Swagger-Webseite zugreifen, um entweder den SnapCenter-Server oder das SnapCenter-Plug-in für VMware vSphere REST-APIs anzuzeigen und einen API-Aufruf manuell auszuführen. Verwenden Sie das SnapCenter Plug-in für VMware vSphere REST-APIs, um VMs und Datastores zu steuern.
+
+Das Plug-in hat verschiedene Swagger-Webseiten von den SnapCenter-Serverdolch-Webseiten.
+
+.Bevor Sie beginnen
+Für SnapCenter Plug-in für VMware vSphere REST-APIs müssen Sie entweder die IP-Adresse oder den Hostnamen des SnapCenter Plug-ins für VMware vSphere kennen.
+
+
+NOTE: Das Plug-in unterstützt nur REST APIs zur Integration mit Applikationen anderer Anbieter. PowerShell Commandlets oder CLI werden nicht unterstützt.
+
+.Schritte
+. Geben Sie in einem Browser die URL ein, um auf die Plug-in Swagger Webseite zuzugreifen:
++
+`\https://<SCV_IP>:8144/api/swagger-ui/index.html`
+
++
+
+IMPORTANT: Verwenden Sie nicht die folgenden Zeichen in DER REST-API-URL: +, . , % Und &.
+
++
+.Beispiel
+Access SnapCenter Plug-in für VMware vSphere REST-APIs:
+
++
+`\https://<SCV_IP>:8144/api/swagger-ui/index.html`
+
++
+`\https://OVAhost:8144/api/swagger-ui/index.html`
+
++
+Melden Sie sich mit dem vCenter-Authentifizierungsmechanismus an, um das Token zu generieren.
+
+. Klicken Sie auf einen API-Ressourcentyp, um die APIs in diesem Ressourcentyp anzuzeigen.
+

@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_minimum_vcenter_privileges_required.html 
+keywords:  
+summary: Bevor Sie mit der Implementierung des SnapCenter Plug-ins für VMware vSphere beginnen, sollten Sie sicherstellen, dass die erforderlichen Mindestberechtigungen für vCenter vorhanden sind. 
+---
+= Minimale vCenter-Berechtigungen erforderlich
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bevor Sie mit der Implementierung des SnapCenter Plug-ins für VMware vSphere beginnen, sollten Sie sicherstellen, dass die erforderlichen Mindestberechtigungen für vCenter vorhanden sind.
+
+
+
+== Erforderliche Berechtigungen für vCenter Admin-Rolle
+
+Datastore.AllocateSpace Datastore.Browse Datastore.Delete Datastore.FileManagement Datastore.Move Datastore.Rename Extension.Register Extension.Unregister Extension.Update Host.Config.AdvancedConfig Host.Config.Resources Host.Config.Settings Host.Config.Storage Host.Local.CreateVM Host.Local.DeleteVM Network.Local.ReconfigVM Resource.ApplyMachine.Assign.Assignate Virtual Machine.NewVM Resource HostConfig.RemigralConfig.VM
+
+
+
+== Erforderliche Berechtigungen für SnapCenter Plug-in für VMware vCenter
+
+|===
+
+
+| *Privilegien* | *Etikett* 
+
+
+| NetappSCV.Guest.RestoreDatei | Wiederherstellung Von Gastdateien 
+
+
+| NetappSCV.Recovery.MountUnMount | Montieren/Entfernen 
+
+
+| NetappSCV.Backup.DeleteBackupJob | Ressourcengruppe/Sicherung Löschen 
+
+
+| NetappSCV.Configure.ConfigureStorageSystems.Delete | Storage-Systeme Entfernen 
+
+
+| NetappSCV.View | Anzeigen 
+
+
+| NetappSCV.Recovery.RecoverVM | Wiederherstellung von VM 
+
+
+| NetappSCV.Configure.ConfigureStorageSystems.AddUpdate | Storage-Systeme Hinzufügen/Ändern 
+
+
+| NetappSCV.Backup.BackupJetzt | Jetzt Sichern 
+
+
+| NetappSCV.Guest.Configure | Gastkonfiguration 
+
+
+| NetappSCV.Configure.ConfigureSnapCenterServer | Konfigurieren Sie den SnapCenter-Server 
+
+
+| NetappSCV.Backup.BackupScheduled | Ressourcengruppe Erstellen 
+|===

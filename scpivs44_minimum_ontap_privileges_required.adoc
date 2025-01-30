@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_minimum_ontap_privileges_required.html 
+keywords:  
+summary: Die erforderlichen Mindestberechtigungen für ONTAP variieren je nach SnapCenter Plug-ins, die Sie zur Datensicherung verwenden. 
+---
+= ONTAP-Berechtigungen erforderlich
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die erforderlichen Mindestberechtigungen für ONTAP variieren je nach SnapCenter Plug-ins, die Sie zur Datensicherung verwenden.
+
+
+NOTE: Ab dem SnapCenter Plug-in für VMware (SCV) 5.0 müssen Sie Applikationen des Typs HTTP und ONTAPI als Benutzeranmeldemethoden für alle ONTAP-Benutzer mit benutzerdefiniertem rollenbasiertem Zugriff auf das SCV hinzufügen. Ohne Zugriff auf diese Applikationen können Backups fehlschlagen. Sie müssen den SCV-Dienst neu starten, um Änderungen an den ONTAP-Benutzeranmeldemethoden zu erkennen.
+
+
+
+== Mindestberechtigungen für ONTAP erforderlich
+
+Für alle SnapCenter Plug-ins sind die folgenden Mindestberechtigungen erforderlich.
+
+|===
+
+
+| All-Access-Befehle: Mindestberechtigungen für ONTAP 8.3 und höher erforderlich. 
+
+
+| Event Generate-AutoSupport-log 
+
+
+| Jobverlauf zeigt Job Show Job Stop an 
+
+
+| lun lun create lun delete lun igroup hinzufügen lun igroup erstellen lun igroup löschen lun igroup umbenennen lun igroup anzeigen lun Mapping add-Reporting-Nodes lun Mapping erstellen lun Mapping delete lun Mapping remove-Reporting-Nodes lun Mapping show lun modify lun move-in-Volume lun offline lun online lun persistent-reservat clear lun resize lun serial lun anzeigen 
+
+
+| snapmirror list-Ziele snapmirror Policy add-rule snapmirror Policy modify-rule snapmirror Policy remove-rule snapmirror Policy show snapmirror restore SnapMirror show SnapMirror show-history snapmirror Update-ls-set snapmirror Update-ls-set 
+
+
+| Version 
+
+
+| Volume-Klon erstellen Volume-Klon zeigen Volume-Klon Teilung starten Volume-Klon-Teilung stoppen Volume erstellen Volume löschen Volume löschen Volume-Datei zerstören Volume-Datei Klon erstellen Volume-Datei zeigen-Nutzung Volume offline Volume online Volume ändern Volume-qtree erstellen Volume qtree löschen Volume-qtree ändern Volume-qtree zeigen Volume beschränken Volume zeigen Volume zeigen Volume zeigen Volume zeigen Volume beschränken Volume zeigen snapshot erstellen Volume Snapshot löschen Volume Snapshot ändern Volume Snapshot umbenennen Volume Snapshot wiederherstellen Volume Snapshot wiederherstellen Datei Volume Snapshot zeigen Volume unmounten 
+
+
+| vserver cifs vserver cifs share erstellen vServer cifs share löschen vServer cifs shadowcopy show vserver cifs share show vserver cifs show vserver Export-Policy vServer Export-Policy erstellen vServer Export-Policy löschen vServer Export-Policy Regel erstellen vServer Export-Policy Regel erstellen vserver Export-Policy zeigen vserver Export-Policy show vserver iscsi vserver iscsi connection show vserver nvme Subsystem Controller vserver nvme-Subsystem-Controller zeigen vServer nvme-Subsystemzuordnung vServer nvme-Subsystemzuordnung anzeigen vServer nvme-Subsystemzuordnung hinzufügen vServer nvme-Subsystemzuordnung entfernen vServer nvme-Subsystem-Host zeigen vServer nvme-Subsystem-Host zeigen vServer nvme-Subsystem-Host entfernen vServer nvme-Subsystem zeigen vServer nvme-Subsystem löschen vServer nvme-Namespace zeigt Failover-Gruppen für die Netzwerkschnittstelle an 
+|===
+|===
+| Schreibgeschützter Befehl: Mindestberechtigungen für ONTAP 8.3 und höher erforderlich 
+
+
+| Cluster Identity show Network Interface show vserver vserver Peer vserver show 
+|===
+Sie können den Befehl _Cluster Identity show_ Cluster Level ignorieren, wenn Sie eine Rolle erstellen, die dem Daten-Vserver zugeordnet werden soll.
+
+
+NOTE: Sie können die Warnmeldungen zu den nicht unterstützten vServer-Befehlen ignorieren.
+
+
+
+== Weitere ONTAP-Informationen
+
+* Wenn Sie ONTAP 8.2.x verwenden:
++
+Sie müssen sich wie auf der Speicher-VM anmelden `vsadmin` , um über die entsprechenden Berechtigungen für das SnapCenter-Plug-in für VMware vSphere-Vorgänge zu verfügen.
+
+* Wenn Sie ONTAP 8.3 und höher verwenden:
++
+Sie müssen sich als oder mit einer Rolle anmelden `vsadmin` , die über die in den Tabellen oben aufgeführten Mindestberechtigungen verfügt.
+
+* Sie müssen der Cluster-Administrator sein, um Benutzerrollen zu erstellen und zu managen. Sie können die Benutzer entweder der Cluster Storage VM oder der Storage VM zuordnen.
+* Zur Verwendung der SnapMirror Active Sync Funktion benötigen Sie ONTAP 9.12.1 oder höher.
+* So verwenden Sie die tamperproof Snapshot (TPS)-Funktion:
++
+** Für SAN benötigen Sie ONTAP 9.13.1 und höher
+** Für NFS benötigen Sie ONTAP 9.12.1 und höher
+
+
+* Für das NVMe over TCP- und NVMe over FC-Protokoll benötigen Sie ONTAP 9.10.1 und höher.
+
+
+
+NOTE: Ab ONTAP Version 9.11.1 erfolgt die Kommunikation zum ONTAP Cluster über REST APIs. Für den ONTAP-Benutzer sollte die HTTP-Anwendung aktiviert sein. Falls jedoch Probleme mit ONTAP REST APIs auftreten, unterstützt der Konfigurationsschlüssel 'FORCE_ZAPI' die Umschaltung auf den herkömmlichen ZAPI Workflow. Sie müssen möglicherweise diesen Schlüssel mit den Konfigurations-APIS hinzufügen oder aktualisieren und auf „wahr“ setzen. Weitere Informationen finden Sie im KB-Artikel https://kb.netapp.com/mgmt/SnapCenter/How_to_use_RestAPI_to_edit_configuration_parameters_in_SCV["So bearbeiten Sie Konfigurationsparameter in SCV mithilfe der RestAPI"] .

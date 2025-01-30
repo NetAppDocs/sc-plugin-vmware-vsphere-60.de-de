@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_information_not_displayed_after_upgrading_to_a_new_patch_of_the_same_release.html 
+keywords:  
+summary: Nach dem Upgrade des SnapCenter Plug-ins für VMware vSphere auf einen neuen Patch derselben Version werden aktuelle Jobs oder andere Informationen möglicherweise nicht im Dashboard und auf der Jobüberwachung angezeigt. 
+---
+= Informationen, die nach dem Upgrade auf einen neuen Patch derselben Version nicht angezeigt werden
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach dem Upgrade des SnapCenter Plug-ins für VMware vSphere auf einen neuen Patch derselben Version werden aktuelle Jobs oder andere Informationen möglicherweise nicht im Dashboard und auf der Jobüberwachung angezeigt.
+
+Wenn Sie ein Upgrade auf einen neuen Patch derselben Version durchführen, müssen Sie das SnapCenter Plug-in für VMware vSphere Cache auf dem vCenter Webserver löschen und den Server vor dem Upgrade oder der Registrierung neu starten.
+
+Wenn der Plug-in-Cache nicht gelöscht wird, werden die letzten Jobs in den folgenden Szenarien nicht im Dashboard und auf der Jobüberwachung angezeigt:
+
+* Das SnapCenter Plug-in für VMware vSphere wurde mithilfe von vCenter bereitgestellt und später auf ein Patch in derselben Version aktualisiert.
+* Die virtuelle SnapCenter VMware Appliance wurde in vCenter 1 implementiert. Später wurde dieses SnapCenter Plug-in für VMware vSphere in einem neuen vCenter2 registriert. Eine neue Instanz des SnapCenter Plug-ins für VMware vSphere wird mit einem Patch erstellt und in vCenter1 registriert. Da vCenter1 jedoch noch das Cache-Plug-in des ersten SnapCenter Plug-ins für VMware vSphere ohne Patch hat, muss der Cache gelöscht werden.
+
+
+Der Cache befindet sich an den folgenden Orten, abhängig vom Typ des Serverbetriebssystems:
+
+* VCenter Server Linux Appliance
++
+`/etc/vmware/vsphere-client/vc-packages/vsphere-client-serenity/`
+
+* Windows-OS
++
+`%PROGRAMFILES%/VMware/vSphere client/vc-packages/vsphere-client-serenity/`
+
+
+
+
+
+== Problemumgehung, wenn Sie bereits vor dem Löschen des Caches aktualisiert haben
+
+. Melden Sie sich im SnapCenter Plug-in für die Management-GUI von VMware vSphere an.
++
+Die IP-Adresse wird angezeigt, wenn Sie das SnapCenter-Plug-in für VMware vSphere bereitstellen.
+
+. Klicken Sie im linken Navigationsbereich auf *Konfiguration* und dann im Abschnitt *Plug-in Details* auf die Option Service, um das Plug-in zu deaktivieren.
++
+SnapCenter-Plug-in für VMware vSphere ist deaktiviert, und die Erweiterung wird in vCenter nicht registriert.
+
+. Suchen Sie den `vsphere-client-serenity` Ordner, suchen Sie ihn, `com.netapp.scv.client-<release-number>` und löschen Sie ihn.
++
+Der Ordnername ändert sich für jedes Release.
+
+. Starten Sie vCenter Server neu.
+. Melden Sie sich beim VMware vSphere-Client an.
+. Klicken Sie im linken Navigationsbereich auf *Konfiguration* und dann im Abschnitt *Plug-in-Details* auf die Option Service, um das Plug-in zu aktivieren.
++
+Der Service SnapCenter Plug-in für VMware vSphere ist aktiviert, und die Erweiterung wird in vCenter registriert.
+
+

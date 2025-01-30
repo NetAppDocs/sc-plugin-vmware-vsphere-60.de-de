@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_modify_the_time_zones.html 
+keywords:  
+summary: Wenn Sie einen Backup-Zeitplan für eine SnapCenter-Plug-in für VMware vSphere-Ressourcengruppe konfigurieren, wird der Zeitplan automatisch für die Zeitzone festgelegt, in der das SnapCenter-Plug-in für VMware vSphere bereitgestellt wird. Diese Zeitzone können Sie mit dem SnapCenter Plug-in für VMware vSphere Management-GUI oder der Wartungskonsole ändern. 
+---
+= Ändern der Zeitzonen für Backups
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revnumber: 
+:revdate: the schedule is automatically set for the time zone in which SnapCenter Plug-in for VMware vSphere is deployed. You can modify that time zone by using the SnapCenter Plug-in for VMware vSphere management GUI or maintenance console.
+
+
+.Bevor Sie beginnen
+Sie müssen die IP-Adresse und die Anmeldedaten für das SnapCenter Plug-in für die Management-GUI von VMware vSphere kennen. Sie müssen auch das MFA-Token notieren, das von der Wartungskonsole generiert wurde.
+
+* Die IP-Adresse wurde bei der Bereitstellung des SnapCenter-Plug-ins für VMware vSphere angezeigt.
+* Verwenden Sie die Anmeldeinformationen, die während der Bereitstellung des SnapCenter-Plug-ins für VMware vSphere oder später geändert wurden.
+* Generieren Sie ein 6-stelliges MFA-Token mithilfe der Systemkonfigurationsoptionen der Wartungskonsole.
+
+
+.Schritte
+. Melden Sie sich im SnapCenter Plug-in für die Management-GUI von VMware vSphere an.
++
+Verwenden Sie das Format `\https://<appliance-IP-address>:8080`
+
+. Klicken Sie in der oberen Symbolleiste auf das Symbol Einstellungen.
++
+image:scpivs44_image28.jpg["SnapCenter Plug-in für VMware vSphere"]
+
+. Klicken Sie auf der Seite *Einstellungen* im Abschnitt *Datum und Uhrzeit* auf *Bearbeiten*.
+. Wählen Sie die neue Zeitzone aus und klicken Sie auf *Speichern*.
++
+Die neue Zeitzone wird für alle Backups verwendet, die vom SnapCenter-Plug-in für VMware vSphere durchgeführt werden.
+
+

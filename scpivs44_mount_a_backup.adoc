@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_mount_a_backup.html 
+keywords:  
+summary: Sie können einen herkömmlichen Datenspeicher aus einem Backup einbinden, wenn Sie auf die Dateien im Backup zugreifen möchten. Sie können das Backup entweder auf demselben ESXi Host mounten, auf dem das Backup erstellt wurde, oder auf einem alternativen ESXi Host, der denselben Typ von VM- und Host-Konfigurationen hat. Sie können einen Datastore mehrmals auf einem Host mounten. 
+---
+= Mounten Sie ein Backup
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können einen herkömmlichen Datenspeicher aus einem Backup einbinden, wenn Sie auf die Dateien im Backup zugreifen möchten. Sie können das Backup entweder auf demselben ESXi Host mounten, auf dem das Backup erstellt wurde, oder auf einem alternativen ESXi Host, der denselben Typ von VM- und Host-Konfigurationen hat. Sie können einen Datastore mehrmals auf einem Host mounten.
+
+Sie können einen vVol Datastore nicht mounten.
+
+.Bevor Sie beginnen
+* Stellen Sie sicher, dass sich der alternative ESXi Host mit dem Speicher verbinden kann
++
+Wenn Sie einen alternativen ESXi-Host mounten möchten, müssen Sie sicherstellen, dass der alternative ESXi-Host eine Verbindung zum Speicher herstellen kann und Folgendes hat:
+
++
+** Dieselbe UID und dieselbe GID wie beim ursprünglichen Host
+** Dieselbe virtuelle Appliance für das SnapCenter Plug-in für VMware vSphere-Version wie die des ursprünglichen Hosts
+
+
+* Stellen Sie bei Verwendung des iSCSI-Protokolls sicher, dass die Initiatoren für das Speichersystem dem ESXi-Host zugeordnet sind. Wenn Sie das NVMe-Protokoll verwenden, fügen Sie Controller hinzu, um das erforderliche Subsystem dem ESXi-Host zuzuordnen.
+* Bereinigen Sie veraltete LUN/Namespace
++
+Da der ESXi-Host nur eine eindeutige LUN/einen eindeutigen Namespace pro Datastore erkennen kann, schlägt der Vorgang fehl, wenn mehr als einer gefunden wird. Dies kann auftreten, wenn Sie einen Mount-Vorgang starten, bevor ein vorheriger Mount-Vorgang abgeschlossen ist, oder wenn Sie LUN/Namespace manuell klonen oder wenn Klone während eines Unmounting-Vorgangs nicht aus dem Speicher gelöscht werden. Um das Erkennen mehrerer Klone zu vermeiden, sollten Sie alle veralteten LUNs/Namespaces auf dem Storage bereinigen.
+
+
+
+.Über diese Aufgabe
+Der Mount-Vorgang kann fehlschlagen, wenn die Storage-Tier der FabricPool, auf der sich der Datastore befindet, nicht verfügbar ist.
+
+.Schritte
+. Wählen Sie auf der Seite VMware vSphere Client Shortcuts *Storage* aus.
+. Klicken Sie mit der rechten Maustaste auf einen Datastore, und wählen Sie *SnapCenter Plug-in für VMware vSphere* > *Mount Backup*.
+. Wählen Sie auf der Seite * Mount Datastore* ein Backup und einen Backup-Speicherort (primär oder sekundär) aus, und klicken Sie dann auf *Finish*.
+. Optional: Gehen Sie wie folgt vor, um zu überprüfen, ob der Datenspeicher angehängt ist:
++
+.. Klicken Sie in der Symbolleiste auf *Menü* und wählen Sie dann in der Dropdown-Liste *Storage* aus.
+.. Im linken Navigationsbereich wird der Datastore angezeigt, den Sie oben in der Liste gemountet haben.
++
+Wenn Sie einen Attach- oder Mount-Vorgang auf einem SnapVault-Ziel-Volume durchführen, das durch SnapVault-Zeitpläne geschützt ist und ONTAP 8.3 ausführt, wird möglicherweise ein zusätzlicher Snapshot im Dialogfeld „Anhängen“ oder „Bereitstellen“ aufgeführt. Das liegt daran, dass durch den Attach- oder Mount-Vorgang das SnapVault Ziel-Volume klont und ONTAP das Volume durch Erstellung eines neuen Snapshots aktualisiert.
+
++
+Um zu verhindern, dass beim Klonen des Volumes neue Snapshots erstellt werden, deaktivieren Sie den ONTAP-Zeitplan für das SnapVault Volume. Zuvor vorhandene Snapshots werden nicht gelöscht.
+
+
+
+

@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: scpivs44_manage_policies.html 
+keywords:  
+summary: Backup-Richtlinien für das SnapCenter Plug-in für VMware vSphere lassen sich erstellen, ändern, anzeigen, trennen und löschen. Zur Durchführung von Datensicherungsvorgängen sind Richtlinien erforderlich. 
+---
+= Management von Richtlinien
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Backup-Richtlinien für das SnapCenter Plug-in für VMware vSphere lassen sich erstellen, ändern, anzeigen, trennen und löschen. Zur Durchführung von Datensicherungsvorgängen sind Richtlinien erforderlich.
+
+
+
+== Richtlinien trennen
+
+Sie können Richtlinien aus einer SnapCenter Plug-in für VMware vSphere Ressourcengruppe entfernen, wenn diese Richtlinien die Datensicherung für die Ressourcen nicht mehr regeln sollen. Sie müssen eine Richtlinie trennen, bevor Sie sie entfernen können oder bevor Sie die Zeitplanfrequenz ändern.
+
+.Über diese Aufgabe
+Die Richtlinien zum Trennen von Richtlinien aus den Ressourcengruppen des SnapCenter Plug-in für VMware vSphere unterscheiden sich von den Richtlinien für SnapCenter-Ressourcengruppen. Bei einer VMware vSphere-Client-Ressourcengruppe können alle Richtlinien getrennt werden, sodass die Ressourcengruppe keine Richtlinie bleibt. Um jedoch Datensicherungsvorgänge an dieser Ressourcengruppe durchzuführen, müssen Sie mindestens eine Richtlinie anhängen.
+
+.Schritte
+. Klicken Sie im linken Navigationsbereich des SCV-Plug-ins auf *Ressourcengruppen*, wählen Sie dann eine Ressourcengruppe aus und klicken Sie auf *Bearbeiten*.
+. Deaktivieren Sie auf der Seite *Richtlinien* des Assistenten * Ressourcengruppe bearbeiten* das Häkchen neben den Richtlinien, die Sie entfernen möchten.
++
+Sie können der Ressourcengruppe auch eine Richtlinie hinzufügen, indem Sie die Richtlinie prüfen.
+
+. Nehmen Sie zusätzliche Änderungen an der Ressourcengruppe im Rest des Assistenten vor, und klicken Sie dann auf *Fertig stellen*.
+
+
+
+
+== Richtlinien ändern
+
+Sie können Richtlinien für ein SnapCenter Plug-in für eine VMware vSphere Ressourcengruppe ändern. Sie können die Häufigkeit, die Replikationsoptionen, die Snapshot-Aufbewahrungseinstellungen oder die Skriptinformationen ändern, während eine Richtlinie an eine Ressourcengruppe angehängt ist.
+
+.Über diese Aufgabe
+Durch das Ändern von SnapCenter Plug-in für VMware vSphere-Backup-Richtlinien unterscheiden sich die Backup-Richtlinien für applikationsbasierte SnapCenter Plug-ins nicht. Wenn Sie die Plug-in-Richtlinien ändern, müssen Sie keine Richtlinien von Ressourcengruppen trennen.
+
+Bevor Sie die Replizierungs- oder Aufbewahrungseinstellungen ändern, sollten Sie die möglichen Folgen berücksichtigen.
+
+* Erhöhen der Replizierungs- oder Aufbewahrungseinstellungen
++
+Backups sammeln sich weiter an, bis sie die neue Einstellung erreichen.
+
+* Verringerung der Replizierungs- oder Aufbewahrungseinstellungen
++
+Backups, die über die neue Einstellung hinausgehen, werden bei der Durchführung des nächsten Backups gelöscht.
+
+
+
+
+NOTE: Zum Ändern eines SnapCenter-Plug-ins für VMware vSphere-Richtlinienplans müssen Sie den Zeitplan in der Plug-in-Ressourcengruppe ändern.
+
+.Schritte
+. Klicken Sie im linken Navigationsbereich des SCV-Plug-ins auf *Richtlinien*, wählen Sie eine Richtlinie aus und klicken Sie auf *Bearbeiten*.
+. Ändern Sie die Richtlinienfelder.
+. Wenn Sie fertig sind, klicken Sie auf *Aktualisieren*.
+
+
+Die Änderungen werden wirksam, wenn das nächste geplante Backup durchgeführt wird.
+
+
+
+== Richtlinien löschen
+
+Wenn Sie keine konfigurierte Backup-Richtlinie mehr für das SnapCenter Plug-in für VMware vSphere benötigen, möchten Sie sie möglicherweise löschen.
+
+.Bevor Sie beginnen
+Sie müssen die Richtlinie von allen Ressourcengruppen in der virtuellen Appliance für SnapCenter getrennt haben, bevor Sie sie löschen können.
+
+.Schritte
+. Klicken Sie im linken Navigationsbereich des SCV-Plug-ins auf *Richtlinien*, wählen Sie eine Richtlinie aus und klicken Sie auf *Entfernen*.
+. Klicken Sie im Bestätigungsdialogfeld auf *OK*.
+
